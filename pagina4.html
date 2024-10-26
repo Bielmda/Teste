@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+        .form-container h1 {
+            font-size: 14px;
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .form-container p {
+            font-size: 12px;
+            margin: 10px 0;
+        }
+        .form-container input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .form-container .finalizar-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .form-container .finalizar-btn:hover {
+            background-color: #d0d0d0;
+        }
+        .form-container .page-number {
+            text-align: right;
+            font-size: 12px;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>BRINCADEIRA, SÃO SÓ 2 PÁGINAS</h1>
+        <div class="page-number">Página 2/2</div>
+        <p>Ainda não to convencido que você seja a Milena, preencha seu nome completo</p>
+        <input type="text" id="nomeCompleto">
+        <p>Nome do seu namorado</p>
+        <input type="text" id="nomeNamorado">
+        <p>Idade dele</p>
+        <input type="text" id="idadeNamorado">
+        <p>Você quer mesmo abrir esse presente</p>
+        <input type="text" id="querAbrir">
+        <button class="finalizar-btn" onclick="validarFormulario()">Finalizar</button>
+    </div>
+
+    <script>
+        function validarFormulario() {
+            const nomeCompleto = document.getElementById('nomeCompleto').value.trim();
+            const nomeNamorado = document.getElementById('nomeNamorado').value.trim();
+            const idadeNamorado = document.getElementById('idadeNamorado').value.trim();
+            const querAbrir = document.getElementById('querAbrir').value.trim().toLowerCase();
+
+            // Verificações
+            if (nomeCompleto === "MILENA CARVALHO VILHALVA" &&
+                nomeNamorado === "GABRIEL ALMEIDA DOS SANTOS" &&
+                idadeNamorado === "17" &&
+                querAbrir === "sim") {
+                window.location.href = "texto.html"; // Redireciona para texto.html
+            } else if (nomeNamorado !== "GABRIEL ALMEIDA DOS SANTOS") {
+                exibirErro("ERROU O NOME DO PRÓPRIO NAMORADO? ELE FICARIA MAGOADO (ME DISSERAM)", true);
+            } else if (idadeNamorado === "16") {
+                exibirErro("POXA, ele daqui a pouco faz aniversário. Não vai ser mais 16 😒");
+            } else {
+                exibirErro("Dados incorretos");
+            }
+        }
+
+        function exibirErro(mensagem, invasora = false) {
+            if (invasora) {
+                document.body.innerHTML = "<h1>INVASORA</h1>";
+            } else {
+                alert(mensagem);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+

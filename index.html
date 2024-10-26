@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>Presente</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            position: relative; /* Adicionado para permitir a posição absoluta do botão */
+        }
+        .container {
+            text-align: center;
+        }
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .popup {
+            display: inline-block;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .popup p {
+            margin: 0 0 20px;
+            font-size: 16px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button.yes {
+            background-color: #a4d007;
+            color: white;
+            position: absolute; /* Adicionado para permitir a movimentação do botão */
+        }
+        .button.no {
+            background-color: #d00707;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message">PRESENTE SUPER HIPER MEGA BLASTER SECRETO</div>
+        <div class="popup">
+            <p>ESSE É UM PRESENTE CONFIDENCIAL E EXCLUSIVO, TEM CERTEZA QUE FOI PRA VOCÊ E DESEJA ABRI-LO??</p>
+            <div class="buttons">
+                <button class="button yes" id="yes-button">SIM</button>
+                <button class="button no">NÃO</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let button = document.getElementById('yes-button');
+        let clicks = 0;
+        let positions = [
+            { top: '20%', left: '60%' }, // Posição inicial
+            { top: '60%', left: '20%' }, // Segunda posição
+            { top: '40%', left: '60%' }, // Terceira posição
+            { top: '80%', left: '40%' } // Quarta posição
+        ];
+
+        button.addEventListener('click', () => {
+            clicks++;
+            if (clicks <= 4) {
+                button.style.top = positions[clicks - 1].top;
+                button.style.left = positions[clicks - 1].left;
+            }
+            if (clicks === 4) {
+                // Redireciona para outra página após o quarto clique
+                window.location.href = 'pagina2.html';
+            }
+        });
+    </script>
+</body>
+</html>
